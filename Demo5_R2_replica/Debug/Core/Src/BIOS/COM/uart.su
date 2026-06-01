@@ -1,0 +1,4 @@
+../Core/Src/BIOS/COM/uart.c:36:12:H7_UARTx_init_struct	16	static
+../Core/Src/BIOS/COM/uart.c:46:12:H7_UARTx_init	16	static
+../Core/Src/BIOS/COM/uart.c:89:12:H7_UARTx_DMA_RX_Init	24	static
+../Core/Src/BIOS/COM/uart.c:170:12:H7_UARTx_DMA_TX_Init	32	static

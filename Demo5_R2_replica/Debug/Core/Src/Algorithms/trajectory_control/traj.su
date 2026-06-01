@@ -1,0 +1,5 @@
+../Core/Src/Algorithms/trajectory_control/traj.c:11:6:robot_trajint	40	static
+../Core/Src/Algorithms/trajectory_control/traj.c:23:6:robot_trajstart	24	static
+../Core/Src/Algorithms/trajectory_control/traj.c:36:6:robot_trajeval	24	static
+../Core/Src/Algorithms/trajectory_control/traj.c:52:6:trajint	72	static
+../Core/Src/Algorithms/trajectory_control/traj.c:94:6:trajeval	24	static

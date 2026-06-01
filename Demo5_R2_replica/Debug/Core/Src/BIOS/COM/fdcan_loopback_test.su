@@ -1,0 +1,3 @@
+../Core/Src/BIOS/COM/fdcan_loopback_test.c:36:13:apply_1mbps_timing	16	static
+../Core/Src/BIOS/COM/fdcan_loopback_test.c:47:13:test_one_bus	160	static
+../Core/Src/BIOS/COM/fdcan_loopback_test.c:132:6:FDCAN_RunLoopbackTest	16	static

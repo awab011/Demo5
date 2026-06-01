@@ -1,0 +1,45 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (13.3.rel1)
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../Core/Src/Actuators/VESC_FDCAN/bldc_interface.c \
+../Core/Src/Actuators/VESC_FDCAN/buffer.c \
+../Core/Src/Actuators/VESC_FDCAN/crc.c \
+../Core/Src/Actuators/VESC_FDCAN/packet.c \
+../Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.c \
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c \
+../Core/Src/Actuators/VESC_FDCAN/vesc_uart.c 
+
+OBJS += \
+./Core/Src/Actuators/VESC_FDCAN/bldc_interface.o \
+./Core/Src/Actuators/VESC_FDCAN/buffer.o \
+./Core/Src/Actuators/VESC_FDCAN/crc.o \
+./Core/Src/Actuators/VESC_FDCAN/packet.o \
+./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.o \
+./Core/Src/Actuators/VESC_FDCAN/vesc_interface.o \
+./Core/Src/Actuators/VESC_FDCAN/vesc_uart.o 
+
+C_DEPS += \
+./Core/Src/Actuators/VESC_FDCAN/bldc_interface.d \
+./Core/Src/Actuators/VESC_FDCAN/buffer.d \
+./Core/Src/Actuators/VESC_FDCAN/crc.d \
+./Core/Src/Actuators/VESC_FDCAN/packet.d \
+./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.d \
+./Core/Src/Actuators/VESC_FDCAN/vesc_interface.d \
+./Core/Src/Actuators/VESC_FDCAN/vesc_uart.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+Core/Src/Actuators/VESC_FDCAN/%.o Core/Src/Actuators/VESC_FDCAN/%.su Core/Src/Actuators/VESC_FDCAN/%.cyclo: ../Core/Src/Actuators/VESC_FDCAN/%.c Core/Src/Actuators/VESC_FDCAN/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m7 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32H735xx -DUSE_PWR_LDO_SUPPLY -c -I../Core/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc -I../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I../Drivers/CMSIS/Include -I../LWIP/App -I../LWIP/Target -I../Middlewares/Third_Party/LwIP/src/include -I../Middlewares/Third_Party/LwIP/system -I../Drivers/BSP/Components/lan8742 -I../Middlewares/Third_Party/LwIP/src/include/netif/ppp -I../Middlewares/Third_Party/LwIP/src/include/lwip -I../Middlewares/Third_Party/LwIP/src/include/lwip/apps -I../Middlewares/Third_Party/LwIP/src/include/lwip/priv -I../Middlewares/Third_Party/LwIP/src/include/lwip/prot -I../Middlewares/Third_Party/LwIP/src/include/netif -I../Middlewares/Third_Party/LwIP/src/include/compat/posix -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/arpa -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/net -I../Middlewares/Third_Party/LwIP/src/include/compat/posix/sys -I../Middlewares/Third_Party/LwIP/src/include/compat/stdc -I../Middlewares/Third_Party/LwIP/system/arch -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -o "$@"
+
+clean: clean-Core-2f-Src-2f-Actuators-2f-VESC_FDCAN
+
+clean-Core-2f-Src-2f-Actuators-2f-VESC_FDCAN:
+	-$(RM) ./Core/Src/Actuators/VESC_FDCAN/bldc_interface.cyclo ./Core/Src/Actuators/VESC_FDCAN/bldc_interface.d ./Core/Src/Actuators/VESC_FDCAN/bldc_interface.o ./Core/Src/Actuators/VESC_FDCAN/bldc_interface.su ./Core/Src/Actuators/VESC_FDCAN/buffer.cyclo ./Core/Src/Actuators/VESC_FDCAN/buffer.d ./Core/Src/Actuators/VESC_FDCAN/buffer.o ./Core/Src/Actuators/VESC_FDCAN/buffer.su ./Core/Src/Actuators/VESC_FDCAN/crc.cyclo ./Core/Src/Actuators/VESC_FDCAN/crc.d ./Core/Src/Actuators/VESC_FDCAN/crc.o ./Core/Src/Actuators/VESC_FDCAN/crc.su ./Core/Src/Actuators/VESC_FDCAN/packet.cyclo ./Core/Src/Actuators/VESC_FDCAN/packet.d ./Core/Src/Actuators/VESC_FDCAN/packet.o ./Core/Src/Actuators/VESC_FDCAN/packet.su ./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.cyclo ./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.d ./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.o ./Core/Src/Actuators/VESC_FDCAN/vesc_fdcan.su ./Core/Src/Actuators/VESC_FDCAN/vesc_interface.cyclo ./Core/Src/Actuators/VESC_FDCAN/vesc_interface.d ./Core/Src/Actuators/VESC_FDCAN/vesc_interface.o ./Core/Src/Actuators/VESC_FDCAN/vesc_interface.su ./Core/Src/Actuators/VESC_FDCAN/vesc_uart.cyclo ./Core/Src/Actuators/VESC_FDCAN/vesc_uart.d ./Core/Src/Actuators/VESC_FDCAN/vesc_uart.o ./Core/Src/Actuators/VESC_FDCAN/vesc_uart.su
+
+.PHONY: clean-Core-2f-Src-2f-Actuators-2f-VESC_FDCAN
+

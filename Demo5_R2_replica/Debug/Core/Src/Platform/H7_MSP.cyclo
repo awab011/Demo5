@@ -1,0 +1,16 @@
+../Core/Src/Platform/H7_MSP.c:22:6:HAL_MspInit	1
+../Core/Src/Platform/H7_MSP.c:46:6:HAL_ADC_MspInit	6
+../Core/Src/Platform/H7_MSP.c:135:6:HAL_ADC_MspDeInit	6
+../Core/Src/Platform/H7_MSP.c:204:6:HAL_FDCAN_MspInit	7
+../Core/Src/Platform/H7_MSP.c:316:6:HAL_FDCAN_MspDeInit	7
+../Core/Src/Platform/H7_MSP.c:415:6:HAL_I2C_MspInit	5
+../Core/Src/Platform/H7_MSP.c:504:6:HAL_I2C_MspDeInit	3
+../Core/Src/Platform/H7_MSP.c:561:6:HAL_SPI_MspInit	3
+../Core/Src/Platform/H7_MSP.c:631:6:HAL_SPI_MspDeInit	2
+../Core/Src/Platform/H7_MSP.c:666:6:HAL_TIM_Encoder_MspInit	3
+../Core/Src/Platform/H7_MSP.c:744:6:HAL_TIM_Base_MspInit	15
+../Core/Src/Platform/H7_MSP.c:945:6:HAL_TIM_MspPostInit	3
+../Core/Src/Platform/H7_MSP.c:1017:6:HAL_TIM_Encoder_MspDeInit	3
+../Core/Src/Platform/H7_MSP.c:1095:6:HAL_TIM_Base_MspDeInit	15
+../Core/Src/Platform/H7_MSP.c:1323:6:HAL_UART_MspInit	9
+../Core/Src/Platform/H7_MSP.c:1494:6:HAL_UART_MspDeInit	5

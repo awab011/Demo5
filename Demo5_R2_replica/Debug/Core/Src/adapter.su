@@ -1,0 +1,2 @@
+../Core/Src/adapter.c:47:6:initialize	32	static
+../Core/Src/adapter.c:220:6:CAN_PROCESS	16	static

@@ -1,0 +1,2 @@
+../Core/Src/Sensors/PWMEncoder/PWMEncoder.c:10:6:PWMEncoder_Angle	24	static
+../Core/Src/Sensors/PWMEncoder/PWMEncoder.c:47:6:PWMEncoder_Angle_Update	16	static

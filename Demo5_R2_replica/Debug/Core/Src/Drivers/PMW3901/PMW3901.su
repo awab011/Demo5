@@ -1,0 +1,3 @@
+../Core/Src/Drivers/PMW3901/PMW3901.c:24:6:PMW3901_SlaveInit	16	static
+../Core/Src/Drivers/PMW3901/PMW3901.c:42:6:PMW3901_SlaveHandler	16	static
+../Core/Src/Drivers/PMW3901/PMW3901.c:61:6:PMW3901_ConnectionHandler	16	static

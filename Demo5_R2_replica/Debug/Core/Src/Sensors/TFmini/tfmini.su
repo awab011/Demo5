@@ -1,0 +1,2 @@
+../Core/Src/Sensors/TFmini/tfmini.c:9:6:TFmini_Init	16	static
+../Core/Src/Sensors/TFmini/tfmini.c:98:6:TFmini_Handler	16	static

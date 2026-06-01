@@ -1,0 +1,2 @@
+../Core/Src/Drivers/qei.c:23:12:H7_QEI_init	64	static
+../Core/Src/Drivers/qei.c:73:6:H7_QEI_read	16	static

@@ -1,0 +1,9 @@
+../Core/Src/Sensors/WTIMU63/wtimu63.c:26:13:WTIMU63_UpdateYaw	9
+../Core/Src/Sensors/WTIMU63/wtimu63.c:60:6:WTIMU63_Init	1
+../Core/Src/Sensors/WTIMU63/wtimu63.c:83:6:WTIMU63_InitI2C	1
+../Core/Src/Sensors/WTIMU63/wtimu63.c:103:6:WTIMU63_InitI2C_DMA	1
+../Core/Src/Sensors/WTIMU63/wtimu63.c:129:6:WTIMU63_Handler	25
+../Core/Src/Sensors/WTIMU63/wtimu63.c:287:6:WTIMU63_I2CHandle	1
+../Core/Src/Sensors/WTIMU63/wtimu63.c:323:6:WTIMU63_DMAHandle	5
+../Core/Src/Sensors/WTIMU63/wtimu63.c:352:6:WTIMU63_SetOffset	1
+../Core/Src/Sensors/WTIMU63/wtimu63.c:360:6:WTIMU63_ResetYawTracking	1

@@ -1,0 +1,6 @@
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:24:6:PSxMasterInit	32	static
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:40:6:PSxSlaveInit	16	static
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:56:6:PSx_MasterHandler	16	static
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:83:6:PSx_SlaveHandler	16	static
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:110:6:PSxConnectionHandler	24	static
+../Core/Src/Drivers/PSx_Interface/PSx_Interface.c:155:6:PSxBTGetXY	16	static

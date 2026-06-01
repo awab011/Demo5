@@ -1,0 +1,5 @@
+../Core/Src/Algorithms/MODN/MODN.c:32:6:MODNRobotBaseVelInit	24	static
+../Core/Src/Algorithms/MODN/MODN.c:40:6:MODNRobotConInit	24	static
+../Core/Src/Algorithms/MODN/MODN.c:47:6:MODNWheelVelInit	24	static
+../Core/Src/Algorithms/MODN/MODN.c:55:6:MODNWheelDirInit	24	static
+../Core/Src/Algorithms/MODN/MODN.c:63:6:MODNUpdate	16	static

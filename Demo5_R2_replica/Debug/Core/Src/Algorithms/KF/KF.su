@@ -1,0 +1,2 @@
+../Core/Src/Algorithms/KF/KF.c:16:6:KalmanFilterInit	32	static
+../Core/Src/Algorithms/KF/KF.c:29:6:KalmanFilter	16	static

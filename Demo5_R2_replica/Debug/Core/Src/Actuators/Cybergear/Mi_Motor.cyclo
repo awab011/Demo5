@@ -1,0 +1,14 @@
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:18:10:float_to_uint	3
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:29:7:uint_to_float	1
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:40:6:MI_Motor_FDCanTx	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:60:6:MI_motor_init	1
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:70:6:MI_motor_enable	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:87:6:MI_motor_get_ID	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:107:6:MI_motor_controlmode	1
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:128:6:MI_motor_stop	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:145:6:MI_motor_setMechPosition2Zero	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:165:6:MI_motor_changeID	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:185:6:MI_motor_Read_One_Para	2
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:206:6:MI_motor_Write_One_Para	1
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:225:6:MI_motor_decode	4
+../Core/Src/Actuators/Cybergear/Mi_Motor.c:264:6:MIMotor_MotorDataDecode	5

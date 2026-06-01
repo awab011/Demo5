@@ -1,0 +1,45 @@
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.DocumentRevisions-V100
+.VolumeIcon.icns
+Icon\r
+Network Trash Folder
+Temporary Items
+
+# ── Claude / AI tooling ───────────────────────────────────────────────────────
+.claude/
+CLAUDE.md
+HANDOFF.md
+
+# ── ROS2 build artifacts ──────────────────────────────────────────────────────
+build/
+install/
+log/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+*.so
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+*.bag
+*.db3

@@ -1,0 +1,4 @@
+../Core/Src/BIOS/COM/i2c.c:32:12:H7_i2cx_init_struct	3
+../Core/Src/BIOS/COM/i2c.c:40:12:H7_i2cx_init	11
+../Core/Src/BIOS/COM/i2c.c:116:12:H7_i2cx_DMA_RX_init	12
+../Core/Src/BIOS/COM/i2c.c:216:12:H7_i2cx_DMA_TX_init	12

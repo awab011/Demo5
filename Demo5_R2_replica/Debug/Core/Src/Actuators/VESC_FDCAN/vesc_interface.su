@@ -1,0 +1,15 @@
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:17:6:VESCInit	24	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:66:6:VESCUARTInit	24	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:98:6:VESCVelocity	64	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:126:6:VESCRPM	32	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:177:6:VESCPDC	32	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:226:6:VESCPOS	32	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:257:6:VESCCurr	32	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:289:6:VESCStop	16	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:343:6:VESCReleaseMotor	16	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:368:6:VESCHandBrake	16	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:387:6:VESCCurrBrake	16	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:398:6:VESCFullBrake	16	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:408:6:bldc_send_packet	24	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:421:6:VESCGetSpeed	32	static
+../Core/Src/Actuators/VESC_FDCAN/vesc_interface.c:443:6:VESCGetDist	24	static

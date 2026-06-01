@@ -1,0 +1,14 @@
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:33:9:ik2_analytic	6
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:67:6:mat_mult_vec	3
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:80:6:mat_add_diag	2
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:89:6:mat_inverse	18
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:137:6:numeric_jacobian	3
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:172:6:ik_dls	26
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:308:6:fk_myrobot	2
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:335:7:wrap_to_pi	3
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:346:6:joints_within_limits	4
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:368:6:IK_RobotArm_Init	2
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:397:6:IK_RobotArm_InitialGuess	2
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:419:6:joints_safetyangle	1
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:436:6:IK_AddWaypoint	3
+../Core/Src/Algorithms/Inverse_Kinematics/inverse_kinematics.c:459:6:IK_NextWaypoint	2

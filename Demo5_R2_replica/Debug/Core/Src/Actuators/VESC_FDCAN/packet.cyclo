@@ -1,0 +1,5 @@
+../Core/Src/Actuators/VESC_FDCAN/packet.c:30:6:packet_init	1
+../Core/Src/Actuators/VESC_FDCAN/packet.c:37:6:packet_reset	1
+../Core/Src/Actuators/VESC_FDCAN/packet.c:43:6:packet_send_packet	6
+../Core/Src/Actuators/VESC_FDCAN/packet.c:91:6:packet_process_byte	8
+../Core/Src/Actuators/VESC_FDCAN/packet.c:171:12:try_decode_packet	14

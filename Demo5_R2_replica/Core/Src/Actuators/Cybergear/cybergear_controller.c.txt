@@ -1,0 +1,226 @@
+/*
+ * cybergear_controller.c
+ *
+ *  Created on: May 1, 2024
+ *      Author: yvc
+ */
+
+#include "cybergear_controller.h"
+CybergearController* controller = (CybergearController*)malloc(sizeof(CybergearController));
+
+CybergearController* CybergearController_create(uint8_t master_can_id) {
+    CybergearController* controller = (CybergearController*)malloc(sizeof(CybergearController));
+    controller->can = NULL;
+    controller->master_can_id = master_can_id;
+    controller->recv_count = 0;
+    return controller;
+}
+
+void CybergearController_destroy(CybergearController* controller) {
+    free(controller);
+}
+
+uint8_t CybergearController_init(CybergearController* controller, const uint8_t* ids, size_t num_ids, uint8_t mode, CybergearCanInterface* can) {
+    CybergearSoftwareConfig configs[num_ids];
+    for (size_t i = 0; i < num_ids; i++) {
+        configs[i].id = ids[i];
+    }
+    return CybergearController_init_with_configs(controller, ids, configs, num_ids, mode, can);
+}
+
+uint8_t CybergearController_init_with_configs(CybergearController* controller, const uint8_t* ids, const CybergearSoftwareConfig* configs, size_t num_ids, uint8_t mode, CybergearCanInterface* can) {
+    if (num_ids != sizeof(configs) / sizeof(CybergearSoftwareConfig)) {
+        return false;
+    }
+
+    controller->can = can;
+    controller->motor_ids = malloc(num_ids * sizeof(uint8_t));
+    memcpy(controller->motor_ids, ids, num_ids * sizeof(uint8_t));
+    controller->num_motors = num_ids;
+    controller->control_mode = mode;
+
+    for (size_t i = 0; i < num_ids; i++) {
+        CybergearDriver* driver = CybergearDriver_create(controller->master_can_id, ids[i]);
+        CybergearDriver_init(driver, can);
+        CybergearDriver_init_motor(driver, mode);
+        controller->drivers[ids[i]] = driver;
+        controller->motor_update_flag[ids[i]] = false;
+    }
+
+    for (size_t i = 0; i < num_ids; i++) {
+        controller->sw_configs[configs[i].id] = configs[i];
+    }
+
+    return true;
+}
+
+uint8_t CybergearController_set_run_mode(CybergearController* controller, const uint8_t* ids, const uint8_t* modes, size_t num_ids) {
+    if (num_ids != sizeof(ids) / sizeof(uint8_t) || num_ids != sizeof(modes) / sizeof(uint8_t)) {
+        return false;
+    }
+
+    uint8_t ret = true;
+    for (size_t i = 0; i < num_ids; i++) {
+        ret &= CybergearController_set_run_mode_single(controller, ids[i], modes[i]);
+    }
+    return ret;
+}
+
+uint8_t CybergearController_set_run_mode_single(CybergearController* controller, uint8_t id, uint8_t mode) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+    CybergearDriver_set_run_mode(controller->drivers[id], mode);
+    return true;
+}
+
+uint8_t CybergearController_set_run_mode_all(CybergearController* controller, uint8_t mode) {
+    for (size_t i = 0; i < controller->num_motors; i++) {
+        CybergearDriver_set_run_mode(controller->drivers[controller->motor_ids[i]], mode);
+    }
+    return true;
+}
+
+uint8_t CybergearController_set_motor_config(CybergearController* controller, const CybergearSoftwareConfig* configs, size_t num_configs) {
+    if (num_configs != sizeof(configs) / sizeof(CybergearSoftwareConfig)) {
+        return false;
+    }
+
+    for (size_t i = 0; i < num_configs; i++) {
+        controller->sw_configs[configs[i].id] = configs[i];
+    }
+
+    return true;
+}
+
+uint8_t CybergearController_send_current_command(CybergearController* controller, const uint8_t* ids, const float* currents, size_t num_ids) {
+    if (num_ids != sizeof(ids) / sizeof(uint8_t) || num_ids != sizeof(currents) / sizeof(float)) {
+        return false;
+    }
+
+    uint8_t ret = true;
+    for (size_t i = 0; i < num_ids; i++) {
+        ret &= CybergearController_send_current_command_single(controller, ids[i], currents[i]);
+    }
+    return ret;
+}
+
+uint8_t CybergearController_send_current_command_single(CybergearController* controller, uint8_t id, float current) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+
+    float cur = fmax(fmin(controller->sw_configs[id].direction * current, controller->sw_configs[id].limit_current), -controller->sw_configs[id].limit_current);
+    CybergearDriver_set_current_ref(controller->drivers[id], cur);
+    return true;
+}
+
+uint8_t CybergearController_set_mech_position_to_zero(CybergearController* controller, uint8_t id) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+    CybergearDriver_set_mech_position_to_zero(controller->drivers[id]);
+    return true;
+}
+
+uint8_t CybergearController_get_motor_status(CybergearController* controller, MotorStatus* status, size_t num_status) {
+    if (num_status != sizeof(status) / sizeof(MotorStatus)) {
+        return false;
+    }
+
+    uint8_t ret = true;
+    for (size_t i = 0; i < controller->num_motors; i++) {
+        MotorStatus* stat = &status[i];
+        ret &= CybergearController_get_motor_status_single(controller, controller->motor_ids[i], stat);
+    }
+    return ret;
+}
+
+uint8_t CybergearController_get_motor_status_single(CybergearController* controller, uint8_t id, MotorStatus* status) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+
+    *status = CybergearDriver_get_motor_status(controller->drivers[id]);
+    status->position = controller->sw_configs[id].direction * status->position + controller->sw_configs[id].position_offset;
+    status->velocity *= controller->sw_configs[id].direction;
+    status->effort *= controller->sw_configs[id].direction;
+    return true;
+}
+
+uint8_t CybergearController_get_software_config(CybergearController* controller, uint8_t id, CybergearSoftwareConfig* config) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+    *config = controller->sw_configs[id];
+    return true;
+}
+
+uint8_t CybergearController_process_packet(CybergearController* controller) {
+    uint8_t is_updated = false;
+    while (CybergearCanInterface_available(controller->can)) {
+        unsigned long id;
+        uint8_t len;
+        uint8_t buffer[8];
+        if (!CybergearCanInterface_read_message(controller->can, &id, buffer, &len)) {
+            continue;
+        }
+
+        uint8_t receive_can_id = id & 0xff;
+        if (receive_can_id != controller->master_can_id) {
+            CG_DEBUG_PRINTF("Invalid master can id. Expected=[0x%02x] Actual=[0x%02x] Raw=[%x]\n", controller->master_can_id, receive_can_id, id);
+            continue;
+        }
+
+        uint8_t motor_can_id = (id & 0xff00) >> 8;
+        if (controller->drivers[motor_can_id] == NULL) {
+            continue;
+        }
+
+        if (CybergearDriver_update_motor_status(controller->drivers[motor_can_id], id, buffer, len)) {
+            controller->motor_update_flag[motor_can_id] = true;
+            is_updated = true;
+            controller->recv_count++;
+        }
+    }
+
+    return is_updated;
+}
+
+uint8_t CybergearController_check_update_flag(CybergearController* controller, uint8_t id) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+    return controller->motor_update_flag[id];
+}
+
+uint8_t CybergearController_reset_update_flag(CybergearController* controller, uint8_t id) {
+    if (!CybergearController_check_motor_id(controller, id)) {
+        return false;
+    }
+    controller->motor_update_flag[id] = false;
+    return true;
+}
+
+const uint8_t* CybergearController_motor_ids(CybergearController* controller) {
+    return controller->motor_ids;
+}
+
+size_t CybergearController_num_motors(CybergearController* controller) {
+    return controller->num_motors;
+}
+
+uint8_t CybergearController_check_motor_id(CybergearController* controller, uint8_t id) {
+    if (controller->drivers[id] == NULL || controller->sw_configs[id].id != id) {
+        return false;
+    }
+    return true;
+}
+
+unsigned long CybergearController_send_count(CybergearController* controller) {
+    unsigned long cnt = 0;
+    for (size_t i = 0; i < controller->num_motors; i++) {
+        cnt += CybergearDriver_send_count(controller->drivers[controller->motor_ids[i]]);
+    }
+    return cnt;
+}

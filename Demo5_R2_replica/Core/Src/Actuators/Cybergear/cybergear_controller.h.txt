@@ -1,0 +1,90 @@
+/*
+ * cybergear_controller.h
+ *
+ *  Created on: May 1, 2024
+ *      Author: yvc
+ */
+
+#ifndef SRC_MI_MOTOR_CYBERGEAR_CONTROLLER_H_TXT_
+#define SRC_MI_MOTOR_CYBERGEAR_CONTROLLER_H_TXT_
+
+#include "cybergear.h"
+
+/**
+ * @brief Cybergear config for hardware limit
+ */
+typedef struct {
+    uint8_t id;                   //!< motor id
+    int8_t direction;             //!< motor direction (-1: ccw / 1: cw)
+    float limit_speed;            //!< limit speed (rad/s)
+    float limit_current;          //!< limit current (A)
+    float limit_torque;           //!< limit torque (Nm)
+    float current_kp;             //!< control parameter kp for current control
+    float current_ki;             //!< control parameter ki for current control
+    float current_filter_gain;    //!< current filter gain
+} CybergearHardwareConfig;
+
+/**
+ * @brief Cybergear config for software limit
+ */
+typedef struct {
+    uint8_t id;                   //!< motor id
+    int8_t direction;             //!< motor direction
+    float limit_speed;            //!< limit speed (rad/s)
+    float limit_current;          //!< limit current (Aa)
+    float limit_torque;           //!< limit torque (Nm)
+    float upper_position_limit;   //!< motor upper limit [rad]
+    float lower_position_limit;   //!< motor lower limit [rad]
+    int8_t calib_direction;       //!< calibration direction
+    float position_offset;        //!< motor offset [rad]
+} CybergearSoftwareConfig;
+
+/**
+ * @brief Cybegear motion command struct
+ */
+typedef struct {
+    float position;   //!< target position
+    float velocity;   //!< target velocity (rad/sec)
+    float effort;     //!< target effort
+    float kp;         //!< motion control kp
+    float kd;         //!< motion control kd
+} CybergearMotionCommand;
+
+/**
+ * @brief Motor status struct
+ */
+typedef struct {
+    float position;    //!< motor position [rad]
+    float velocity;    //!< motor velocity [rad/s]
+    float effort;      //!< motor effort [Nm]
+    float current;     //!< motor current [A]
+    float temperature; //!< motor temperature [C]
+} MotorStatus;
+
+/**
+ * @brief Multi-Cybergear controller struct
+ */
+typedef struct CybergearController CybergearController;
+CybergearController* CybergearController_create(uint8_t master_can_id);
+void CybergearController_destroy(CybergearController* controller);
+uint8_t CybergearController_init(CybergearController* controller, const uint8_t* ids, size_t num_ids, uint8_t mode, CAN_HandleTypeDef* can);
+uint8_t CybergearController_init_with_configs(CybergearController* controller, const uint8_t* ids, const CybergearSoftwareConfig* configs, size_t num_ids, uint8_t mode, CAN_HandleTypeDef* can);
+uint8_t CybergearController_send_position_command(CybergearController* controller, const uint8_t* ids, const float* positions, size_t num_ids);
+uint8_t CybergearController_send_position_command_single(CybergearController* controller, uint8_t id, float position);
+uint8_t CybergearController_send_speed_command(CybergearController* controller, const uint8_t* ids, const float* speeds, size_t num_ids);
+uint8_t CybergearController_send_speed_command_single(CybergearController* controller, uint8_t id, float speed);
+uint8_t CybergearController_send_current_command(CybergearController* controller, const uint8_t* ids, const float* currents, size_t num_ids);
+uint8_t CybergearController_send_current_command_single(CybergearController* controller, uint8_t id, float current);
+uint8_t CybergearController_set_mech_position_to_zero(CybergearController* controller, uint8_t id);
+uint8_t CybergearController_get_motor_status(CybergearController* controller, MotorStatus* status, size_t num_motors);
+uint8_t CybergearController_get_motor_status_single(CybergearController* controller, uint8_t id, MotorStatus* status);
+uint8_t CybergearController_get_software_config(CybergearController* controller, uint8_t id, CybergearSoftwareConfig* config);
+uint8_t CybergearController_process_packet(CybergearController* controller);
+uint8_t CybergearController_check_update_flag(CybergearController* controller, uint8_t id);
+uint8_t CybergearController_reset_update_flag(CybergearController* controller, uint8_t id);
+const uint8_t* CybergearController_motor_ids(CybergearController* controller);
+size_t CybergearController_num_motor_ids(CybergearController* controller);
+unsigned long CybergearController_send_count(CybergearController* controller);
+unsigned long CybergearController_recv_count(CybergearController* controller);
+
+#endif /* SRC_MI_MOTOR_CYBERGEAR_CONTROLLER_H_TXT_ */

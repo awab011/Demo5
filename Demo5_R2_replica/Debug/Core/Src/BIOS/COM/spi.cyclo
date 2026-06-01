@@ -1,0 +1,4 @@
+../Core/Src/BIOS/COM/spi.c:33:12:H7_struct_init	2
+../Core/Src/BIOS/COM/spi.c:61:12:H7_SPIx_Init	4
+../Core/Src/BIOS/COM/spi.c:129:12:H7_SPIx_rx_DMA_init	3
+../Core/Src/BIOS/COM/spi.c:177:12:H7_SPIx_tx_DMA_init	3

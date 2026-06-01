@@ -1,0 +1,9 @@
+../Drivers/CMSIS/Include/core_cm7.h:2156:34:__NVIC_SystemReset	4	static,ignoring_inline_asm
+../Core/Src/Platform/H7_system.c:21:6:H7_system_init	8	static
+../Core/Src/Platform/H7_system.c:36:13:cache_enable	24	static,ignoring_inline_asm
+../Core/Src/Platform/H7_system.c:48:13:SystemClock_Config	120	static
+../Core/Src/Platform/H7_system.c:109:13:PeriphCommonClock_Config	192	static
+../Core/Src/Platform/H7_system.c:137:13:MPU_Config	24	static
+../Core/Src/Platform/H7_system.c:181:13:DWT_init	4	static
+../Core/Src/Platform/H7_system.c:199:6:DWT_delay_us	24	static
+../Core/Src/Platform/H7_system.c:214:6:DWT_GetTick_us	4	static
